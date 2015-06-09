@@ -29,9 +29,9 @@ feature "User Signs Up" do
     click_on "Sign Up"
     page.should have_alert("Please fix the errors below to continue.")
 
-    page.should have_css(".user_name .error", text: "can't be blank")
-    page.should have_css(".user_email .error", text: "must be an email address")
-    page.should have_css(".user_password_confirmation .error", text: "doesn't match Password")
+    page.should have_error("can't be blank", on: "Name")
+    page.should have_error("must be an email address", on: "Email")
+    page.should have_error("doesn't match Password", on: "Password confirmation")
 
     fill_in "Name", with: "Sally"
     fill_in "Email", with: "joe@example.com"
