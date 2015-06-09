@@ -1,6 +1,8 @@
-%h1= @post.title
-By:
-.author= @post.author.name
+- content_for(:page_title) do
+  %h1= @post.title
+  .author
+    By:
+    = @post.author.name
 :markdown
   #{@post.body}
 

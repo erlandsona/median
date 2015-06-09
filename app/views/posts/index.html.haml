@@ -1,5 +1,8 @@
+- content_for(:page_title) do
+  %h1 #{@user.name}'s Knowledge
+
 %ul
   - @posts.each do |post|
-    = link_to post.title, user_post_path(post.author, post)
+    %li= link_to post.title, user_post_path(post.author, post)
 
-= link_to "All Contributors", root_path
+= link_to "< All Contributors", root_path

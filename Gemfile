@@ -16,6 +16,10 @@ gem 'simple_form'
 gem 'sorcery'
 gem 'uglifier', '>= 1.3.0'
 
+group :development do
+  gem 'refills'
+end
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'

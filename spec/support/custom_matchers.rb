@@ -12,13 +12,13 @@ end
 
 RSpec::Matchers.define :have_alert do |expected, options|
   match do |page|
-    page.should have_css('.alert', text: expected)
+    page.should have_css('.flash-alert', text: expected)
   end
 end
 
 RSpec::Matchers.define :have_notice do |expected, options|
   match do |page|
-    page.should have_css('.notice', text: expected)
+    page.should have_css('.flash-notice', text: expected)
   end
 end
 

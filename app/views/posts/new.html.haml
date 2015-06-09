@@ -1,3 +1,6 @@
+- content_for(:page_title) do
+  %h1 Share New Knowledge
+
 = simple_form_for @post do |f|
   = f.input :title
   = f.input :body

@@ -1,5 +1,5 @@
 // Typography
-$base-font-family: $helvetica;
+$base-font-family: 'Open Sans', sans-serif;
 $heading-font-family: $base-font-family;
 
 // Font Sizes
@@ -33,3 +33,13 @@ $base-border: 1px solid $base-border-color;
 // Forms
 $form-box-shadow: inset 0 1px 3px rgba(#000, 0.06);
 $form-box-shadow-focus: $form-box-shadow, 0 0 5px adjust-color($action-color, $lightness: -5%, $alpha: -0.3);
+
+// Custom Colors
+
+$light-grey: #efefef;
+$primary-color: #A78C83;
+$secondary-color: #3D6499;
+$white: lighten($primary-color, 70%);
+
+$alert-color: #fbe3e4;
+$notice-color: #e5edf8;
