@@ -20,6 +20,7 @@
           - else
             %li= link_to "Share Some Knowledge", new_post_path
             %li= link_to "Sign Out", user_session_path, method: :delete
+            %li= link_to "#{current_user.name}", user_path(current_user)
       %header= content_for?(:page_title) ? content_for(:page_title) : "Page Title"
       %section#content
         - flash.each do |key, message|
