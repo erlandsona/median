@@ -3,12 +3,12 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'home#index'
+  root 'users#index'
 
   resources :posts, only: [:new, :create]
   resource :user_session, only: [:new, :create, :destroy]
   resources :users, only: [:new, :create] do
-    resources :posts, only: [:index]
+    resources :posts, only: [:index, :show]
   end
 
   # Example of regular route:

@@ -23,10 +23,9 @@ feature "user creates post" do
     click_on "Publish Knowledge"
     page.should have_notice("Your knowledge has been published")
     current_path.should == user_posts_path(me)
-    pending
     page.should have_link "TIL: Mugs don't wash themselves"
     click_on "TIL: Mugs don't wash themselves"
-    page.should have_css("p", text: "There are some simple steps to washing a mug.  First, don't set it in the sink.  Then, apply soap, scrub and rinse.  Finally, do set the mug in the drying rack.")
+    page.should have_css("p", text: "There are some simple steps to washing a mug. First, don't set it in the sink. Then, apply soap, scrub and rinse. Finally, do set the mug in the drying rack.")
     page.should have_css(".author", text: "Bob")
   end
 

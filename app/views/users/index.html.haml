@@ -1,0 +1,9 @@
+%h1 Welcome to Median!
+
+%p The world's newest Medium clone.
+
+%h2 Our Knowledgeable Contributors:
+
+%ul
+  - @users.each do |user|
+    = link_to "#{user.name}'s Knowledge", user_posts_path(user)

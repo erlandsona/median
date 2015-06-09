@@ -3,12 +3,12 @@ feature "User views posts" do
   let(:julie){ Fabricate(:user, name: "Julie") }
 
   background do
-    pending
     bob = Fabricate(:user, name: "Bob")
     ingrid = Fabricate(:user, name: "Ingrid")
-    visit root_path
     Fabricate(:post, author: bob, title: "Bob's Burger Recipe")
-    Fabricate(:post, author: julie, title: "Intro to XPath", body: "XPath is *great*")
+    Fabricate(:post, author: julie, title: "Julie's Intro to XPath", body: "XPath is *great*")
+    Fabricate(:post, author: julie, title: "Julie's Over XPath", body: "XPath is *great*")
+    visit root_path
   end
 
   scenario "viewing the list of blogs" do
@@ -21,7 +21,9 @@ feature "User views posts" do
   scenario "viewing the blog of a particular author" do
     click_on "Julie's Knowledge"
     page.should have_link("Julie's Intro to XPath")
+    page.should have_link("Julie's Over XPath")
     page.should_not have_content("Bob's Burger Recipe")
+    page.should have_link("All Contributors", href: root_path)
   end
 
   scenario "viewing an individual post, rendered in markdown" do
@@ -32,6 +34,5 @@ feature "User views posts" do
     page.should have_css("em", text: "great")
     page.should have_css(".author", text: "Julie")
     page.should have_link("Return to Julie's Knowledge", href: user_posts_path(julie))
-    page.should have_link("All Contributors", href: root_path)
   end
 end
