@@ -5,7 +5,7 @@ feature "User Signs Up" do
     click_on "Sign Up"
   end
 
-  scenario "Happy Path" do
+  scenario "Happy Path With No Bio" do
     page.should_not have_link("Sign Up")
     fill_in "Name", with: "Joe"
     fill_in "Email", with: "joe@example.com"
@@ -20,6 +20,24 @@ feature "User Signs Up" do
     click_button "Sign In"
     page.should have_content("Welcome back, Joe")
   end
+
+  scenario "Happy Path With Bio" do
+    page.should_not have_link("Sign Up")
+    fill_in "Name", with: "Joe"
+    fill_in "Email", with: "joe@example.com"
+    fill_in "Password", with: "password1"
+    fill_in "Password confirmation", with: "password1"
+    fill_in "Bio", with: Faker::Lorem.paragraph
+    click_button "Sign Up"
+    page.should have_content("Welcome, Joe")
+    click_on "Sign Out"
+    click_on "Sign In"
+    fill_in "Email", with: "joe@example.com"
+    fill_in "Password", with: "password1"
+    click_button "Sign In"
+    page.should have_content("Welcome back, Joe")
+  end
+
 
   scenario "Error Path" do
     fill_in "Name", with: ""
