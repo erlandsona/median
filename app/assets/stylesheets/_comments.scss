@@ -1,0 +1,21 @@
+// Place all the styles related to the Comments controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.comments {}
+
+.comment-meta a {
+  display: block;
+  color: $primary-color;
+}
+
+.timestamp {
+  display: block;
+  color: $medium-gray;
+  font-style: italic;
+  font-size: 0.875rem;
+}
+
+.comment-body {
+  padding: 1em 0;
+}

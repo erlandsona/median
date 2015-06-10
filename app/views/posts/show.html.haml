@@ -19,9 +19,12 @@
 
 %hr
 
-%h2 Comments
-- @comments.each do |comment|
-  %div.comment
-    %p= "created #{time_ago_in_words(comment.created_at)} ago"
-    %p= "author: #{comment.author.name}"
-    %p= "message: #{comment.body}"
+%div.comments
+  %h2 Comments
+  - @comments.each do |comment|
+    %div.comment
+      %div.comment-meta
+        = link_to "#{comment.author.name}", root_path
+        %span.timestamp= "#{time_ago_in_words(comment.created_at)} ago"
+      %p.comment-body= comment.body
+      %hr
