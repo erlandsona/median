@@ -19,6 +19,8 @@
 %hr
 
 %h2 Comments
-- @post.comments.each do |comment|
+- @comments.each do |comment|
   %div.comment
-    %p= comment.body
+    %p= "created at: #{comment.created_at}"
+    %p= "author: #{comment.author.name}"
+    %p= "message: #{comment.body}"
