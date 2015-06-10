@@ -6,7 +6,7 @@ class Tag < ActiveRecord::Base
             presence: true,
             format: {
               without: /[^\w-]/,
-              message: "please enter tag with no whitespace or special characters." 
+              message: "Tags should be separated by commas and should not have special characters"
             },
             length: { in: 2..50 }
 
