@@ -18,8 +18,8 @@ gem 'uglifier', '>= 1.3.0'
 gem 'postmark-rails'
 
 group :development do
+  gem "letter_opener"
   gem 'refills'
-  gem 'letter_opener'
 end
 
 group :development, :test do
