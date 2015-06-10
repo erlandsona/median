@@ -19,6 +19,13 @@ feature "List only has twenty items per page" do
         page.should have_css("li:nth-child(1)")
         page.should_not have_css("li:nth-child(21)")
       end
+      page.should have_link("2")
+      click_link "2"
+      within("ul.pagination") do
+        page.should have_css("li:nth-child(9)")
+        page.should have_css("li:nth-child(10)")
+        page.should_not have_css("li:nth-child(11)")
+      end
     end
   end
 end
