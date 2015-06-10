@@ -38,16 +38,13 @@ feature "user creates comment" do
     page.should have_css(".comment", text: "Here's my comment to you, Tom.")
    end
 
-  # scenario "sad path" do
-  #   pending
-  #   me = Fabricate(:user, name: "Bob")
-  #   signin_as me
-  #   click_on "Share Some Knowledge"
-  #   fill_in "Title", with: ""
-  #   fill_in "Body", with: ""
-  #   click_on "Publish Knowledge"
-  #   page.should have_alert("Your knowledge could not be published. Please correct the errors below.")
-  #   page.should have_error("can't be blank", on: "Title")
-  #   page.should have_error("can't be blank", on: "Body")
-  # end
+   scenario "sad path" do
+     me = Fabricate(:user, name: "Bob")
+     signin_as me
+     click_on "Bob's Knowledge"
+     click_on "Bob's Burger Recipe"
+     fill_in "Body", with: ""
+     click_on "Publish Comment"
+     page.should have_alert("Your comment could not be published. Comments can't be blank.")
+   end
 end

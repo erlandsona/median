@@ -12,7 +12,7 @@ class CommentsController < ApplicationController
     if @comment.save
       redirect_to :back, notice: "Your comment has been published"
     else
-      flash.alert = "Your comment could not be published. Please correct the errors below."
+      flash.alert = "Your comment could not be published. Comments can't be blank."
       render :new
     end
   end
