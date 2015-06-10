@@ -15,11 +15,11 @@ feature "user creates comment" do
 
   scenario "happy path" do
     me = Fabricate(:user, name: "Bob")
-    tom = Fabricate(:user, name: "Tom")
-    entry = Fabricate(:post, author: "Tom", title: "Tom's Post", :body)
+    entry = Fabricate(:post, title: "Tom's Post")
+    author = entry.author
     signin_as me
-    click_on "Tom's Knowledge"
-    page.should have_content("Tom's Post")
+    click_on "#{@author}'s Knowledge"
+    page.should have_content("#{@author}'s Post")
     click_on "Tom's Post"
     current_path.should == user_posts_path(entry)
     fill_in "Body", with: "Here is my comment to you, Tom."
