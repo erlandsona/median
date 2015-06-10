@@ -1,3 +1,6 @@
+- content_for(:page_title) do
+  %h1 Edit Profile
+  
 = simple_form_for @user do |f|
   = f.input :name
   = f.input :bio

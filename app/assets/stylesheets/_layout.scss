@@ -21,6 +21,10 @@ body {
               color: $white;
             }
           }
+
+          &:last-child {
+            float: right;
+          }
         }
       }
     }
