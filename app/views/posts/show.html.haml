@@ -22,6 +22,6 @@
 %h2 Comments
 - @comments.each do |comment|
   %div.comment
-    %p= "created at: #{comment.created_at}"
+    %p= "created #{time_ago_in_words(comment.created_at)} ago"
     %p= "author: #{comment.author.name}"
     %p= "message: #{comment.body}"
