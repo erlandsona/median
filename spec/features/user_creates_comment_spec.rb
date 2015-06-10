@@ -18,12 +18,12 @@ feature "user creates comment" do
   # * Comment must have a body
   # * Comment must be publicly visible once saved
 
-  # scenario "logged out users can't create comments" do
-  #   visit root_path
-  #   page.should_not have_content("Share Some Knowledge")
-  #   visit new_post_path
-  #   should_be_denied_access
-  # end
+  scenario "logged out users can't create comments" do
+    click_on "Bob's Knowledge"
+    page.should have_content("Bob's Burger Recipe")
+    page.should_not have_content("Leave a comment")
+    click_on "Bob's Burger Recipe"
+  end
 
   scenario "happy path" do
     me = Fabricate(:user, name: "Bob")
@@ -32,11 +32,9 @@ feature "user creates comment" do
     page.should have_content("Bob's Burger Recipe")
     click_on "Bob's Burger Recipe"
     page.should have_css("h1", text: "Bob's Burger Recipe")
-    save_and_open_page
-    fill_in "Body", with: "Here is my comment to you, Tom."
+    fill_in "Body", with: "Here's my comment to you, Tom."
     click_on "Publish Comment"
     page.should have_notice("Your comment has been published")
-    current_path.should == user_posts_path(entry)
     page.should have_css(".comment", text: "Here's my comment to you, Tom.")
    end
 
