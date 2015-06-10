@@ -6,9 +6,9 @@ class CommentsController < ApplicationController
 
   def create
     @post = Post.find(params[:post_id])
-    @comment = Comment.new
+    @comment = @post.comments.create(params[:comment].permit(:body))
     if @comment.save
-      redirect_to root_path, notice: "Your comment has been published"
+      redirect_to :back, notice: "Your comment has been published"
     else
       flash.alert = "Your comment could not be published. Please correct the errors below."
       render :new
