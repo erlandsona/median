@@ -7,3 +7,7 @@
   #{@post.body}
 
 = link_to "Return to #{@post.author.name}'s Knowledgeable", user_posts_path(@post.author)
+
+= simple_form_for [@post, Comment.new] do |f|
+  = f.input :body
+  = f.button :submit, "Publish Comment"
