@@ -1,7 +1,8 @@
 - content_for(:page_title) do
   %h1 Share New Knowledge
 
-= simple_form_for @post do |f|
+= simple_form_for @post, :html => {:multipart => true} do |f|
   = f.input :title
   = f.input :body
+  = f.file_field :image, label: "Upload an image"
   = f.button :submit, "Publish Knowledge"
