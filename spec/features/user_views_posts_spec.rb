@@ -30,7 +30,7 @@ feature "User views posts" do
   scenario "viewing an individual post, rendered in markdown" do
     click_on "Julie's Knowledge"
     click_on("Julie's Intro to XPath")
-    current_path.should == "/users/juldawg/posts/julies_intro_to_xpath"
+    current_path.should == "/users/juldawg/posts/julie_s_intro_to_xpath"
     page.should have_css("h1", text: "Julie's Intro to XPath")
     page.should have_content("XPath is great")
     page.should have_css("em", text: "great")
