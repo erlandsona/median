@@ -21,10 +21,9 @@ body {
               color: $white;
             }
           }
-
-          &:last-child {
-            float: right;
-          }
+        }
+        li#user_name {
+          float: right;
         }
       }
     }
