@@ -2,6 +2,7 @@
   %h1 Welcome back, #{@user.name}!
 
 %h2 Profile
+=gravatar_for @user
 %p Email: #{@user.email}
 %p Bio: #{@user.bio}
 =link_to "Edit"

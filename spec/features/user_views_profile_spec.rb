@@ -18,6 +18,7 @@ feature "User views profile" do
     click_on "Joey"
     current_path.should == user_path(joey)
     page.should have_content("Joey")
+    page.should have_css(".gravatar")
     page.should have_content(joey.email)
     page.should have_content(joey.bio)
     page.should have_link("Edit")
