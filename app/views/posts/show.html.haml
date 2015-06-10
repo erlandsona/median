@@ -8,13 +8,14 @@
 
 = link_to "Return to #{@post.author.name}'s Knowledgeable", user_posts_path(@post.author)
 
-%hr
 
-%h3 Leave a comment
 
-= simple_form_for [@post, Comment.new] do |f|
-  = f.input :body
-  = f.button :submit, "Publish Comment"
+= if logged_in?
+  %hr
+  %h3 Leave a comment
+  = simple_form_for [@post, Comment.new] do |f|
+    = f.input :body
+    = f.button :submit, "Publish Comment"
 
 %hr
 
