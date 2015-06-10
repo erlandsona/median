@@ -8,7 +8,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @username = User.friendly.find(params[:id])
+    @username = User.find(params[:id])
   end
 
 
