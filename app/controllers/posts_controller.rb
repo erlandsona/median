@@ -1,10 +1,11 @@
 class PostsController < ApplicationController
+  attr_reader :per
   before_filter :load_post
   before_filter :load_user, except: [:new, :create]
   before_action :require_login, except: [:index, :show]
 
   def index
-    @posts = @user.posts.all
+    @posts = @user.posts.order("created_at").page(params[:page]).per(20)
   end
 
   def create
