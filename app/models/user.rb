@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   authenticates_with_sorcery!
   extend FriendlyId
-  friendly_id :username, use: :slugged
+  friendly_id :username, use: [:slugged, :finders]
 
   has_many :posts, foreign_key: :author_id
 
