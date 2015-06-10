@@ -1,8 +1,8 @@
 - content_for(:page_title) do
-  %h1 Welcome back, #{@user.name}!
+  %h1 Welcome to #{@user.name}'s profile!
 
-%h2 Profile
 =gravatar_for @user
 %p Email: #{@user.email}
 %p Bio: #{@user.bio}
-=link_to "Edit"
+-if current_user == @user
+  =link_to "Edit", edit_user_path(@user)
