@@ -1,10 +1,6 @@
 class CommentsController < ApplicationController
   before_action :require_login, except: [:index, :show]
 
-  def index
-    @comments = @post.comments.all
-  end
-
   def create
     @post = Post.find(params[:post_id])
     @comment = @post.comments.build(params[:comment].permit(:body))
