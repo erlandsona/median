@@ -1,7 +1,9 @@
 - content_for(:page_title) do
   %h1 #{@user.name}'s Knowledge
 
-%ul
+= paginate @posts
+
+%ul.posts-pagination
   - @posts.each do |post|
     %li= link_to post.title, user_post_path(post.author, post)
 
