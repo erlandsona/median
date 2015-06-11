@@ -26,7 +26,7 @@ feature "User edits profile" do
     click_button "Sign In"
     click_on "Luke"
     click_on "Edit"
-    current_path.should == edit_user_path(luke)
+    current_path.should == edit_user_path
     field_labeled("Name").value.should == "Luke"
     field_labeled("Bio").value.should == luke.bio
     field_labeled("Email").value.should == "a@b.com"

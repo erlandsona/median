@@ -1,8 +1,12 @@
 class UsersController < ApplicationController
-  before_action :load_user, except: [:index]
+  before_action :load_user, except: [:index, :edit, :update]
 
   def index
     @users = User.all
+  end
+
+  def edit
+    @user = current_user
   end
 
   def create
@@ -16,6 +20,8 @@ class UsersController < ApplicationController
   end
 
   def update
+    @user = current_user
+    @user.assign_attributes(user_params)
     if @user.save
       redirect_to user_path(@user)
       flash.notice = "Your profile has been updated"
