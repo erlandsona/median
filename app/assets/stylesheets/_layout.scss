@@ -21,7 +21,23 @@ body {
               color: $white;
             }
           }
+          &#link_user {
+            position:relative;
+          }
+          &#link_user:hover + #edit_user {
+            transition: visibility 3s;
+            visibility: visible;
+          }
+          &#edit_user {
+           visibility: hidden;
+           position: absolute;
+
+           &:hover {
+             visibility: visible;
+           }
+          }
         }
+
         li#sign_out {
           float: right;
         }
