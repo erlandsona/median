@@ -4,10 +4,7 @@ feature "user creates comment" do
 
   background do
     bob = Fabricate(:user, name: "Bob")
-    ingrid = Fabricate(:user, name: "Ingrid")
     Fabricate(:post, author: bob, title: "Bob's Burger Recipe")
-    Fabricate(:post, author: julie, title: "Julie's Intro to XPath", body: "XPath is *great*")
-    Fabricate(:post, author: julie, title: "Julie's Over XPath", body: "XPath is *great*")
     visit root_path
   end
 
@@ -26,25 +23,28 @@ feature "user creates comment" do
   end
 
   scenario "happy path" do
-    me = Fabricate(:user, name: "Bob")
+    me = Fabricate(:user, name: "Holly")
     signin_as me
     click_on "Bob's Knowledge"
     page.should have_content("Bob's Burger Recipe")
     click_on "Bob's Burger Recipe"
     page.should have_css("h1", text: "Bob's Burger Recipe")
-    fill_in "Body", with: "Here's my comment to you, Tom."
+    fill_in "comment_body", with: "Here's my comment to you, Bob."
     click_on "Publish Comment"
     page.should have_notice("Your comment has been published")
-    page.should have_css(".comment", text: "Here's my comment to you, Tom.")
+    page.should have_css(".comment", text: "Here's my comment to you, Bob.")
    end
 
    scenario "sad path" do
-     me = Fabricate(:user, name: "Bob")
+     me = Fabricate(:user, name: "Sally")
      signin_as me
      click_on "Bob's Knowledge"
+     page.should have_content("Bob's Burger Recipe")
      click_on "Bob's Burger Recipe"
-     fill_in "Body", with: ""
+     page.should have_css("h1", text: "Bob's Burger Recipe")
+     fill_in "comment_body", with: ""
      click_on "Publish Comment"
-     page.should have_alert("Your comment could not be published. Comments can't be blank.")
+     page.should have_alert("Your comment could not be published. Please correct the errors below.")
+     page.should have_error("can't be blank", on: "comment_body")
    end
 end
