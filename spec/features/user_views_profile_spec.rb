@@ -13,7 +13,7 @@ feature "User views profile" do
     fill_in "Password", with: "password1"
     click_button "Sign In"
     within("ul") do
-      page.should have_css("li:last-child a", text: "Joey")
+      page.should have_css("li:nth-child(3) a", text: "Joey")
     end
     click_on "Joey"
     current_path.should == user_path(joey)
