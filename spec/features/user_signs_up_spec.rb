@@ -9,7 +9,7 @@ feature "User Signs Up" do
     page.should_not have_link("Sign Up")
     fill_in "Name", with: "Joe"
     fill_in "Email", with: "joe@example.com"
-    fill_in "Username", with: "Joe_schmoe"
+    fill_in "Username", with: "JoeSchmoe"
     fill_in "Password", with: "password1"
     fill_in "Password confirmation", with: "password1"
     click_button "Sign Up"
@@ -38,7 +38,7 @@ feature "User Signs Up" do
 
     fill_in "Name", with: "Sally"
     fill_in "Email", with: "joe@example.com"
-    fill_in "Username", with: "Sally-Sue-Migoo"
+    fill_in "Username", with: "SallySueMigoo"
     fill_in "Password", with: "password1"
     fill_in "Password confirmation", with: "password1"
     click_on "Sign Up"

@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
   validates :name, :username, length: { minimum: 3 }
   validates :email, format: { with: /.+@.+\..+/, message: "must be an email address" }, uniqueness: true
   validates :username, uniqueness: true
+  validates :username, format: { with: /\A[a-zA-Z0-9]+\Z/, message: "can't have whitespace or special characters" }
   validates :password, confirmation: true
   validates :password, :password_confirmation, presence: { on: :create }
 end
