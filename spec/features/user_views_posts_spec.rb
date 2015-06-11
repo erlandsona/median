@@ -8,7 +8,7 @@ feature "User views posts" do
     Fabricate(:post, author: bob, title: "Bob's Burger Recipe")
     Fabricate(:post, author: julie, title: "Julie's Intro to XPath", body: "XPath is *great*")
     Fabricate(:post, author: julie, title: "Julie's Over XPath", body: "XPath is *great*")
-    Fabricate(:post, author: julie, title: "Unfinished Post")
+    Fabricate(:draft, author: julie, title: "Unfinished Post")
     visit root_path
   end
 
