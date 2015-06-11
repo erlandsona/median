@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_action :load_user, except: [:index, :edit, :update]
 
   def index
-    @users = User.all
+    @users = User.order("name").page(params[:page]).per(PER_PAGE)
   end
 
   def edit
@@ -49,6 +49,6 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:name, :email, :bio, :password, :password_confirmation)
+    params.require(:user).permit(:name, :email, :username, :bio, :password, :password_confirmation)
   end
 end
