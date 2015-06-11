@@ -6,7 +6,11 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = current_user
+    if !current_user
+      redirect_to root_path
+    else
+       @user = current_user
+    end
   end
 
   def create

@@ -6,6 +6,8 @@ feature "User edits profile" do
   scenario "logged out user can't edit profile" do
     visit user_path(luke)
     page.should_not have_link("Edit")
+    visit "/user/edit"
+    current_path.should == root_path
   end
 
   scenario "different user can't edit profile" do
