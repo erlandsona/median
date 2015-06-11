@@ -44,4 +44,23 @@ feature "User Signs Up" do
     click_on "Sign Up"
     page.should have_content("Welcome, Sally")
   end
+
+  scenario "invalid username" do
+    fill_in "Name", with: "Brandon"
+    fill_in "Email", with: "joe@example.com"
+    fill_in "Username", with: "b rad"
+    fill_in "Password", with: "password1"
+    fill_in "Password confirmation", with: "password1"
+    click_on "Sign Up"
+    page.should have_alert("Please fix the errors below to continue.")
+    page.should have_error("can't have whitespace or special characters", on: "Username")
+
+    fill_in "Name", with: "Brandon"
+    fill_in "Email", with: "joe@example.com"
+    fill_in "Username", with: "brad"
+    fill_in "Password", with: "password1"
+    fill_in "Password confirmation", with: "password1"
+    click_on "Sign Up"
+    page.should have_content("Welcome, Brandon")
+  end
 end
