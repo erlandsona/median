@@ -16,12 +16,13 @@ RSpec.describe User, type: :model do
       should allow_value("eliza@elizamarcum.com", "a@b.co.uk", "eliza+hash@example.com").for(:email)
     end
     describe "should not save if username is !unique" do
-      it "shoud have error message 'Username has already been taken' "do
+      it "shoud have error message 'has already been taken' "do
         Fabricate(:user, username: "username1")
         user = Fabricate.build(:user, username: "username1")
-        user.errors[:username].any?
+        user.valid?.should be_falsey
+        (user.errors[:username].any?).should be_truthy
         error = user.errors[:username][0]
-        error.should equal('Username has already been taken')
+        expect(error).to eq('has already been taken')
       end
     end
     describe "should be invalid if email is not formatted correctly" do
