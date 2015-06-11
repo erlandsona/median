@@ -1,5 +1,5 @@
-feature "List only has twenty items per page" do
-  scenario "posts list has 20 posts per page" do
+feature "List only has PER_PAGE numbers of items per page. Specified in initializers/kaminari.rb" do
+  scenario "posts list has 5 posts per page" do
     me = Fabricate(:user)
     15.times do
       Fabricate(:post, author: me)
