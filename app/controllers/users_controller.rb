@@ -1,14 +1,11 @@
 class UsersController < ApplicationController
+  before_action :load_user, except: [:index]
+
   def index
     @users = User.all
   end
 
-  def new
-    @user = User.new
-  end
-
   def create
-    @user = User.new(user_params)
     if @user.save
       auto_login(@user)
       redirect_to root_path, notice: "Welcome, #{@user.name}"
@@ -18,17 +15,7 @@ class UsersController < ApplicationController
     end
   end
 
-  def show
-    @user = User.find(params[:id])
-  end
-
-  def edit
-    @user = User.find(params[:id])
-  end
-
   def update
-    @user = User.find(params[:id])
-    @user.assign_attributes(user_params)
     if @user.save
       redirect_to user_path(@user)
       flash.notice = "Your profile has been updated"
@@ -39,6 +26,17 @@ class UsersController < ApplicationController
   end
 
   protected
+
+  def load_user
+    if params[:id].present?
+      @user = User.find(params[:id])
+    else
+      @user = User.new
+    end
+    if params[:user].present?
+      @user.assign_attributes(user_params)
+    end
+  end
 
   def user_params
     params.require(:user).permit(:name, :email, :bio, :password, :password_confirmation)
