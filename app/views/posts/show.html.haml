@@ -10,16 +10,16 @@
 
 %hr
 
-%div.comments
+%div.comments#comments
   %h2.comments-heading Comments
   - if logged_in?
     %div.comment-form
       %h3.comment-form-heading Leave a comment
-      = simple_form_for [@post, Comment.new] do |f|
+      = simple_form_for [@post, @comment] do |f|
         = f.input :body, label: false
         = f.button :submit, "Publish Comment"
 
-  - @comments.each do |comment|
+  - @post.comments.each do |comment|
     %div.comment
       %div.comment-meta
         = link_to "#{comment.author.name}", user_posts_path(comment.author)

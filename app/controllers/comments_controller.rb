@@ -3,13 +3,14 @@ class CommentsController < ApplicationController
 
   def create
     @post = Post.find(params[:post_id])
-    @comment = @post.comments.build(params[:comment].permit(:body))
+    @comment = Comment.new(params.require(:comment).permit(:body))
+    @comment.post = @post
     @comment.author = current_user
     if @comment.save
       redirect_to :back, notice: "Your comment has been published"
     else
-      flash.alert = "Your comment could not be published. Comments can't be blank."
-      render :new
+      flash.alert = "Your comment could not be published. Please correct the errors below."
+      render "posts/show"
     end
   end
 
