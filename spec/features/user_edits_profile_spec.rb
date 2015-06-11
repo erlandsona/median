@@ -37,7 +37,6 @@ feature "User edits profile" do
     page.should have_css(".flash-notice", text: "Your profile has been updated")
     page.should have_content("LANCASTER")
     page.should have_css(".gravatar")
-    page.should have_content("zaphod@beeblebrox.new")
     page.should have_content("He's just this guy, you know?")
     page.should have_link("Edit")
   end
