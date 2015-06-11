@@ -17,7 +17,6 @@ feature "User Signs Up" do
     current_email == "joe@example.com"
     current_email.should have_subject("Welcome to Median")
     current_email.should have_body_text("We hope you're completely average.")
-    click_first_link_in_email("www.median.com/posts/new")
     current_path.should == root_path
     click_on "Sign Out"
     click_on "Sign In"
