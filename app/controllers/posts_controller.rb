@@ -4,7 +4,7 @@ class PostsController < ApplicationController
   before_action :require_login, except: [:index, :show]
 
   def index
-    @posts = @user.posts.order("created_at").page(params[:page]).per(20)
+    @posts = @user.posts.order("created_at").page(params[:page]).per(PER_PAGE)
   end
 
   def create
