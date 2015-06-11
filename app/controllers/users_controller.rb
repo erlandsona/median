@@ -27,7 +27,7 @@ class UsersController < ApplicationController
     @user = current_user
     @user.assign_attributes(user_params)
     if @user.save
-      redirect_to user_path(@user)
+      redirect_to user_posts_path(@user)
       flash.notice = "Your profile has been updated"
     else
       flash.alert = "Please fix the errors below to continue"

@@ -4,7 +4,7 @@ feature "User edits profile" do
   let(:allison){ Fabricate(:user, name: "Allison") }
 
   scenario "logged out user can't edit profile" do
-    visit user_path(luke)
+    visit user_posts_path(luke)
     page.should_not have_link("Edit")
     visit "/user/edit"
     current_path.should == root_path
@@ -16,7 +16,7 @@ feature "User edits profile" do
     fill_in "Email", with: luke.email
     fill_in "Password", with: "password1"
     click_button "Sign In"
-    visit user_path(allison)
+    visit user_posts_path(allison)
     page.should_not have_link("Edit")
   end
 

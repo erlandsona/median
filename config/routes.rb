@@ -7,11 +7,11 @@ Rails.application.routes.draw do
 
   resources :posts, only: [:new, :create]
   resource :user_session, only: [:new, :create, :destroy]
-  resources :users, only: [:new, :create, :show] do
+  resource :user, only: [:update, :edit, :new, :create]
+  resources :users, only: [:show] do
     resources :posts, only: [:index, :show]
   end
 
-  resource :user, only: [:edit, :update]
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

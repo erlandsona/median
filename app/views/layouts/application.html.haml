@@ -19,7 +19,7 @@
               %li= link_to "Sign In", new_user_session_path
           - else
             %li= link_to "Share Some Knowledge", new_post_path
-            %li= link_to "#{current_user.name}", user_path(current_user)
+            %li= link_to "#{current_user.name}", user_posts_path(current_user)
             %li#sign_out= link_to "Sign Out", user_session_path, method: :delete
       %section
         - flash.each do |key, message|
