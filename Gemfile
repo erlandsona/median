@@ -8,6 +8,7 @@ gem 'friendly_id'
 gem 'haml-rails'
 gem 'jbuilder', '~> 2.0'
 gem 'jquery-rails'
+gem 'kaminari'
 gem 'neat'
 gem 'pg'
 gem 'rails', '4.2.1'
@@ -24,8 +25,8 @@ end
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
-  gem 'faker'
   gem 'fabrication'
+  gem 'faker'
   gem 'rspec-rails'
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
