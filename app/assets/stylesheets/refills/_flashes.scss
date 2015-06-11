@@ -10,7 +10,9 @@ $success-color: #e6efc2 !default;
   display: block;
   font-weight: 600;
   margin-bottom: 0;
+  padding: $base-spacing / 2;
   text-align: center;
+  clear: both;
 
   a {
     color: darken($color, 70%);
