@@ -8,6 +8,8 @@ feature "user creates comment" do
     visit root_path
   end
 
+
+
   # As a comment-poster,
   # In order to share my comments to the post,
   # I want to publish a comment
