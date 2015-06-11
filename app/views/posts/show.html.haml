@@ -5,7 +5,7 @@
     = @post.author.name
 :markdown
   #{@post.body}
-  #####tags:
+  #####Tags
   #{@post.all_tags}
 
 = link_to "Return to #{@post.author.name}'s Knowledgeable", user_posts_path(@post.author)

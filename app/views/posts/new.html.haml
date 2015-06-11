@@ -4,5 +4,7 @@
 = simple_form_for @post do |f|
   = f.input :title
   = f.input :body
-  = f.input :all_tags, placeholder: "Tags separated with commas"
+  = f.input :all_tags, label: "Tags", placeholder: "Tags separated with commas"
+  - if @post.errors.messages[:all_tags].nil?
+    = f.error :all_tags, message: @post.errors.messages[:all_tags]
   = f.button :submit, "Publish Knowledge"

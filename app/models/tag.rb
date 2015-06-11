@@ -4,10 +4,7 @@ class Tag < ActiveRecord::Base
 
   validates :name,
             presence: true,
-            format: {
-              without: /[^\w-]/,
-              message: "Tags should be separated by commas and should not have special characters"
-            },
+            format: { without: /[^\w-]/ },
             length: { in: 2..50 }
 
 
