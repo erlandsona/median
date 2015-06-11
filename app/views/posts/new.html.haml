@@ -4,7 +4,5 @@
 = simple_form_for @post, :html => {:multipart => true} do |f|
   = f.input :title
   = f.input :body
-  = f.label "Upload an image"
-  %span For best results, choose an image that's at least 400 pixels wide and at least 150 pixels tall.
-  = f.file_field :image
+  = f.input :image, label: "Upload an image", hint: "For best results, choose an image that's at least 400 pixels wide and at least 150 pixels tall."
   = f.button :submit, "Publish Knowledge"

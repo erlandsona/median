@@ -1,6 +1,5 @@
 - content_for(:page_title) do
   %h1= @post.title
-  /%img(src="#{@post.image_url.to_s}")
   .author
     By:
     = @post.author.name

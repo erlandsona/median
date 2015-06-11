@@ -13,6 +13,6 @@
 /tmp
 
 config/database.yml
-public/
+public/uploads
 # Ignore application configuration
 /config/application.yml
