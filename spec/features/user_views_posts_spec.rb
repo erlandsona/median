@@ -20,7 +20,7 @@ feature "User views posts" do
 
   scenario "viewing the blog of a particular author" do
     click_on "Julie's Knowledge"
-    current_path.should == "/users/juldawg/posts"
+    current_path.should == "/users/Juldawg/posts"
     page.should have_link("Julie's Intro to XPath")
     page.should have_link("Julie's Over XPath")
     page.should_not have_content("Bob's Burger Recipe")
@@ -30,7 +30,7 @@ feature "User views posts" do
   scenario "viewing an individual post, rendered in markdown" do
     click_on "Julie's Knowledge"
     click_on("Julie's Intro to XPath")
-    current_path.should == "/users/juldawg/posts/julie_s_intro_to_xpath"
+    current_path.should == "/users/Juldawg/posts/julie_s_intro_to_xpath"
     page.should have_css("h1", text: "Julie's Intro to XPath")
     page.should have_content("XPath is great")
     page.should have_css("em", text: "great")
