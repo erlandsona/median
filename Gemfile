@@ -15,9 +15,11 @@ gem 'sass-rails', '~> 5.0'
 gem 'simple_form'
 gem 'sorcery'
 gem 'uglifier', '>= 1.3.0'
+gem 'postmark-rails'
 
 group :development do
   gem 'refills'
+  gem 'letter_opener'
 end
 
 group :development, :test do
@@ -39,4 +41,5 @@ group :test do
   gem 'database_cleaner'
   gem 'launchy'
   gem 'shoulda-matchers'
+  gem 'email_spec'
 end
