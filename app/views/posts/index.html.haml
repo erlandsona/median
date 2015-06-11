@@ -3,7 +3,7 @@
 
 = paginate @posts
 
-%ul.pagination
+%ul.posts-pagination
   - @posts.each do |post|
     %li= link_to post.title, user_post_path(post.author, post)
 
