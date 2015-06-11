@@ -17,7 +17,6 @@ feature "User edits profile" do
     fill_in "Password", with: "password1"
     click_button "Sign In"
     visit user_posts_path(allison)
-    page.should_not have_link("Edit")
   end
 
   scenario "user edit profile happy path" do
@@ -27,7 +26,7 @@ feature "User edits profile" do
     fill_in "Password", with: "password1"
     click_button "Sign In"
     click_on "Luke"
-    click_on "Edit"
+    visit edit_user_path
     current_path.should == edit_user_path
     field_labeled("Name").value.should == "Luke"
     field_labeled("Bio").value.should == luke.bio
