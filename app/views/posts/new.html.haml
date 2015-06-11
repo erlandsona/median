@@ -4,5 +4,6 @@
 = simple_form_for @post, :html => {:multipart => true} do |f|
   = f.input :title
   = f.input :body
-  = f.file_field :image, label: "Upload an image"
+  = f.label "Upload an image"
+  = f.file_field :image
   = f.button :submit, "Publish Knowledge"
