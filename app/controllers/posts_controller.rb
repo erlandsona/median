@@ -1,16 +1,24 @@
 class PostsController < ApplicationController
-  before_filter :load_post
+  before_filter :load_post, except: [:index]
   before_filter :load_user, except: [:new, :create]
   before_action :require_login, except: [:index, :show]
 
   def index
-    @posts = @user.posts.all
+    @posts = @user.posts
   end
 
   def create
     @post.author = current_user
     if @post.save
-      redirect_to user_posts_path(current_user), notice: "Your knowledge has been published"
+      if params[:commit] == "Save As Draft"
+        message = "Your draft has been saved."
+
+      else
+        message = "Your knowledge has been published."
+
+      end
+      redirect_to user_posts_path(current_user), notice: message
+
     else
       flash.alert = "Your knowledge could not be published. Please correct the errors below."
       render :new
@@ -18,6 +26,7 @@ class PostsController < ApplicationController
   end
 
   private
+
 
   def load_post
     if params[:id].present?
