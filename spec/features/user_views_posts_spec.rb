@@ -8,6 +8,7 @@ feature "User views posts" do
     Fabricate(:post, author: bob, title: "Bob's Burger Recipe")
     Fabricate(:post, author: julie, title: "Julie's Intro to XPath", body: "XPath is *great*")
     Fabricate(:post, author: julie, title: "Julie's Over XPath", body: "XPath is *great*")
+    Fabricate(:post, author: julie, title: "Unfinished Post")
     visit root_path
   end
 
@@ -24,6 +25,7 @@ feature "User views posts" do
     page.should have_link("Julie's Over XPath")
     page.should_not have_content("Bob's Burger Recipe")
     page.should have_link("All Contributors", href: root_path)
+    page.should have_no_content("Unfinished Post")
   end
 
   scenario "viewing an individual post, rendered in markdown" do
