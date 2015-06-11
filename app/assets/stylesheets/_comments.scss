@@ -28,6 +28,16 @@
     text-transform: uppercase;
     color: $medium-gray;
   }
+  .error {
+    margin-bottom: 1em;
+    display: inline-block;
+    color: red;
+    font-size: 0.875rem;
+    background-color: red;
+    color: white;
+    padding: 0.5em 1em;
+    font-weight: 700;
+  }
 }
 
 .comment-meta a {
