@@ -4,7 +4,6 @@ class CreatePosts < ActiveRecord::Migration
       t.references :author, index: true
       t.string :title
       t.text :body
-      t.datetime :published_at
 
       t.timestamps null: false
     end

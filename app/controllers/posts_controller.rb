@@ -4,7 +4,7 @@ class PostsController < ApplicationController
   before_action :require_login, except: [:index, :show]
 
   def index
-    @posts = @user.posts
+    @posts = @user.posts.published
   end
 
   def create
@@ -15,7 +15,7 @@ class PostsController < ApplicationController
 
       else
         message = "Your knowledge has been published."
-
+        @post.publish!
       end
       redirect_to user_posts_path(current_user), notice: message
 
@@ -31,6 +31,7 @@ class PostsController < ApplicationController
   def load_post
     if params[:id].present?
       @post = Post.find(params[:id])
+
     else
       @post = Post.new
     end
