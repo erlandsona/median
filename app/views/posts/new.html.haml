@@ -1,7 +1,10 @@
 - content_for(:page_title) do
   %h1 Share New Knowledge
 
-= simple_form_for @post do |f|
+= simple_form_for @post, :html => {:multipart => true} do |f|
   = f.input :title
   = f.input :body
+  = f.input :image, label: "Upload an image", hint: "For best results, choose an image that's at least 400 pixels wide and at least 150 pixels tall."
+
+  = f.button :submit, "Save As Draft"
   = f.button :submit, "Publish Knowledge"

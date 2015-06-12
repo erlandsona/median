@@ -1,5 +1,5 @@
 - content_for(:page_title) do
-  %h1= @post.title
+  %h1= @post.title_with_status
   .author
     By:
     = @post.author.name
@@ -7,3 +7,21 @@
   #{@post.body}
 
 = link_to "Return to #{@post.author.name}'s Knowledgeable", user_posts_path(@post.author)
+
+%hr
+
+%div.comments#comments
+  %h2.comments-heading Comments
+  - if logged_in?
+    %div.comment-form
+      %h3.comment-form-heading Leave a comment
+      = simple_form_for [@post, @comment] do |f|
+        = f.input :body, label: false
+        = f.button :submit, "Publish Comment"
+
+  - @post.comments.each do |comment|
+    %div.comment
+      %div.comment-meta
+        = link_to "#{comment.author.name}", user_posts_path(comment.author)
+        %span.timestamp= "#{time_ago_in_words(comment.created_at)} ago"
+      %p.comment-body= comment.body

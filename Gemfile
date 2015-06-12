@@ -3,19 +3,25 @@ ruby '2.2.2'
 #ruby-gemset=median
 
 gem 'bitters'
+gem 'carrierwave'
 gem 'coffee-rails', '~> 4.1.0'
+gem 'figaro'
+gem 'fog'
+gem 'friendly_id'
 gem 'haml-rails'
 gem 'jbuilder', '~> 2.0'
 gem 'jquery-rails'
+gem 'kaminari'
 gem 'neat'
 gem 'pg'
+gem 'postmark-rails'
 gem 'rails', '4.2.1'
 gem 'redcarpet'
+gem 'rmagick'
 gem 'sass-rails', '~> 5.0'
 gem 'simple_form'
 gem 'sorcery'
 gem 'uglifier', '>= 1.3.0'
-gem 'postmark-rails'
 
 group :development do
   gem "letter_opener"
@@ -25,8 +31,8 @@ end
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
-  gem 'faker'
   gem 'fabrication'
+  gem 'faker'
   gem 'rspec-rails'
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
