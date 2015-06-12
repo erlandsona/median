@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
-  before_filter :load_post
-  before_filter :load_user, except: [:new, :create]
+  before_action :load_post
+  before_action :load_user, except: [:new, :create]
   before_action :require_login, except: [:index, :show]
 
   def index
