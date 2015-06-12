@@ -14,6 +14,11 @@ feature "User Signs Up" do
     fill_in "Password confirmation", with: "password1"
     click_button "Sign Up"
     page.should have_content("Welcome, Joe")
+    open_last_email
+    current_email == "joe@example.com"
+    current_email.should have_subject("Welcome to Median")
+    current_email.should have_body_text("We hope you're completely average.")
+    current_path.should == root_path
     click_on "Sign Out"
     click_on "Sign In"
     fill_in "Email", with: "joe@example.com"

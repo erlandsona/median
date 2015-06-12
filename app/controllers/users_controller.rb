@@ -15,6 +15,7 @@ class UsersController < ApplicationController
 
   def create
     if @user.save
+      UserMailer.welcome_email(@user).deliver_now
       auto_login(@user)
       redirect_to root_path, notice: "Welcome, #{@user.name}"
     else

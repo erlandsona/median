@@ -14,6 +14,7 @@ gem 'jquery-rails'
 gem 'kaminari'
 gem 'neat'
 gem 'pg'
+gem 'postmark-rails'
 gem 'rails', '4.2.1'
 gem 'redcarpet'
 gem 'rmagick'
@@ -21,7 +22,9 @@ gem 'sass-rails', '~> 5.0'
 gem 'simple_form'
 gem 'sorcery'
 gem 'uglifier', '>= 1.3.0'
+
 group :development do
+  gem "letter_opener"
   gem 'refills'
 end
 
@@ -44,4 +47,5 @@ group :test do
   gem 'database_cleaner'
   gem 'launchy'
   gem 'shoulda-matchers'
+  gem 'email_spec'
 end
