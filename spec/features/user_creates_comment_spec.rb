@@ -49,5 +49,8 @@ feature "user creates comment" do
      click_on "Publish Comment"
      page.should have_alert("Your comment could not be published. Please correct the errors below.")
      page.should have_error("can't be blank", on: "comment_body")
+     fill_in "comment_body", with: "Here's my comment to you, Bob."
+     click_on "Publish Comment"
+     page.should have_notice("Your comment has been published")
    end
 end

@@ -7,7 +7,7 @@ class CommentsController < ApplicationController
     @comment.post = @post
     @comment.author = current_user
     if @comment.save
-      redirect_to :back, notice: "Your comment has been published"
+      redirect_to user_post_path(@post.author, @post), notice: "Your comment has been published"
     else
       flash.alert = "Your comment could not be published. Please correct the errors below."
       render "posts/show"
