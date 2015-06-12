@@ -18,9 +18,6 @@ NSS Cohort 8 Class Project / Medium clone
 
 At the end of this process, `rake` should pass.
 
-7. Copy `config/application.yml.example` to `config/application.yml` and
-   input AWS S3 Credentials 
-
 ### Subsequently
 
 1. `git pull`
