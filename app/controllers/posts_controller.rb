@@ -4,10 +4,9 @@ class PostsController < ApplicationController
   before_action :require_login, except: [:index, :show]
 
   def index
+    @posts = @user.posts.order("created_at").page(params[:page]).per(PER_PAGE)
     unless @user == current_user
-      @posts = @user.posts.published
-    else
-      @posts = @user.posts
+      @posts = @posts.published
     end
   end
 
@@ -34,6 +33,8 @@ class PostsController < ApplicationController
       flash.alert = "You do not have permission to access that page."
       redirect_to root_path
     end
+    @comments = @post.comments.all
+    @comment = Comment.new
   end
 
   private

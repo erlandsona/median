@@ -4,7 +4,7 @@ body {
   padding: 0 1em;
   #container {
     @include outer-container;
-    nav, header, section#content, footer {
+    nav, header, section, footer {
       @include span-columns(12);
     }
     nav {
@@ -21,6 +21,25 @@ body {
               color: $white;
             }
           }
+          &#link_user {
+            position:relative;
+          }
+          &#link_user:hover + #edit_user {
+            transition: visibility 3s;
+            visibility: visible;
+          }
+          &#edit_user {
+           visibility: hidden;
+           position: absolute;
+
+           &:hover {
+             visibility: visible;
+           }
+          }
+        }
+
+        li#sign_out {
+          float: right;
         }
       }
     }
