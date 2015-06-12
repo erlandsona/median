@@ -4,7 +4,7 @@ body {
   padding: 0 1em;
   #container {
     @include outer-container;
-    nav, header, section#content, footer {
+    nav, header, section, footer {
       @include span-columns(12);
     }
     nav {
