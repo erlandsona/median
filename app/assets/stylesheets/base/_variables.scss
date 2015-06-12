@@ -21,11 +21,13 @@ $green: #57AD68;
 $dark-gray: #333;
 $medium-gray: #999;
 $light-gray: #ddd;
-
+$green: #355A52;
+$light-green: lighten(#355A52, 20%);
 // Font Colors
 $base-background-color: #fff;
 $base-font-color: $dark-gray;
 $action-color: lighten($green, 10%);
+
 
 // Border
 $base-border-color: $light-gray;

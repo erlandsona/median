@@ -19,11 +19,14 @@
               %li= link_to "Sign In", new_user_session_path
           - else
             %li= link_to "Share Some Knowledge", new_post_path
-            %li= link_to "Sign Out", user_session_path, method: :delete
-      %header= content_for?(:page_title) ? content_for(:page_title) : "Page Title"
-      %section#content
+            %li#link_user= link_to "#{current_user.name}", user_posts_path(current_user)
+            %li#edit_user= link_to "Edit", edit_user_path
+            %li#sign_out= link_to "Sign Out", user_session_path, method: :delete
+      %section
         - flash.each do |key, message|
           %div{ class: "flash-#{key}" }= message
+      %header= content_for?(:page_title) ? content_for(:page_title) : "Page Title"
+      %section#content
         %article= yield
       %footer
         %p This is the #{link_to "Nashville Software School", "http://nashvillesoftwareschool.com"} Cohort 8 Class Project / Medium clone.

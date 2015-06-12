@@ -1,5 +1,11 @@
 - content_for(:page_title) do
-  %h1 #{@user.name}'s Knowledge
+  %h1 Welcome to #{@user.name}
+
+%div.profile-container
+  =gravatar_for @user
+  %h2 #{@user.name}
+  %p #{@user.bio}
+
 
 = paginate @posts
 

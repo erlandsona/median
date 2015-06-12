@@ -30,6 +30,7 @@ RSpec.describe User, type: :model do
       it { should_not allow_value("eliza@examplecom").for(:email) }
       it { should_not allow_value("@.com").for(:email) }
     end
+    it { should_not validate_presence_of(:bio) }
     it "should have a working factory" do
       Fabricate.build(:user).should be_valid
     end

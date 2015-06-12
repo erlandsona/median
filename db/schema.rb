@@ -45,6 +45,7 @@ ActiveRecord::Schema.define(version: 20150611192317) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "name"
+    t.text     "bio"
     t.string   "username"
   end
 
