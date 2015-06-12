@@ -22,6 +22,6 @@ feature "User views own posts" do
     page.should have_link("Julie's Over XPath")
     page.should_not have_content("Bob's Burger Recipe")
     page.should have_link("All Contributors", href: root_path)
-    page.should have_content("Unfinished Post")
+    page.should have_content("Unfinished Post [DRAFT]")
   end
 end
