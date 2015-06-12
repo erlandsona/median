@@ -11,6 +11,6 @@
 
 %ul.posts-pagination
   - @posts.each do |post|
-    %li= link_to post.title, user_post_path(post.author, post)
+    %li= link_to post.title_with_status, user_post_path(post.author, post)
 
 = link_to "< All Contributors", root_path

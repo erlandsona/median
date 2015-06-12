@@ -31,9 +31,11 @@ ActiveRecord::Schema.define(version: 20150611192317) do
     t.integer  "author_id"
     t.string   "title"
     t.text     "body"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.string   "image"
     t.string   "slug"
+    t.datetime "published_at"
   end
 
   add_index "posts", ["author_id"], name: "index_posts_on_author_id", using: :btree
@@ -45,8 +47,8 @@ ActiveRecord::Schema.define(version: 20150611192317) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "name"
-    t.text     "bio"
     t.string   "username"
+    t.text     "bio"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
