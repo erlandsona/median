@@ -34,6 +34,7 @@ feature "user creates comment" do
     fill_in "comment_body", with: "Here's my comment to you, Bob."
     click_on "Publish Comment"
     page.should have_notice("Your comment has been published")
+    page.should have_css("a", text: "Holly")
     page.should have_css(".comment", text: "Here's my comment to you, Bob.")
    end
 
