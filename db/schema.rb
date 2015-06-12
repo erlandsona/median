@@ -16,6 +16,17 @@ ActiveRecord::Schema.define(version: 20150611192317) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "comments", force: :cascade do |t|
+    t.integer  "post_id"
+    t.integer  "author_id"
+    t.text     "body"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "comments", ["author_id"], name: "index_comments_on_author_id", using: :btree
+  add_index "comments", ["post_id"], name: "index_comments_on_post_id", using: :btree
+
   create_table "posts", force: :cascade do |t|
     t.integer  "author_id"
     t.string   "title"
@@ -40,5 +51,7 @@ ActiveRecord::Schema.define(version: 20150611192317) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
 
+  add_foreign_key "comments", "posts"
+  add_foreign_key "comments", "users", column: "author_id"
   add_foreign_key "posts", "users", column: "author_id"
 end

@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   friendly_id :username, use: :finders
 
   has_many :posts, foreign_key: :author_id
+  has_many :comments
 
   validates :email, :name, :username, presence: true
   validates :name, :username, length: { minimum: 3 }

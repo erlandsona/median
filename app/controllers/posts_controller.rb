@@ -17,6 +17,11 @@ class PostsController < ApplicationController
     end
   end
 
+  def show
+    @comments = @post.comments.all
+    @comment = Comment.new
+  end
+
   private
 
   def load_post
