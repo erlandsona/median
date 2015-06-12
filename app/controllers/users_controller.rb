@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   def index
-    @users = User.all
+    @users = User.order("name").page(params[:page]).per(PER_PAGE)
   end
 
   def new
@@ -21,6 +21,6 @@ class UsersController < ApplicationController
   protected
 
   def user_params
-    params.require(:user).permit(:name, :email, :password, :password_confirmation)
+    params.require(:user).permit(:name, :email, :username, :password, :password_confirmation)
   end
 end
