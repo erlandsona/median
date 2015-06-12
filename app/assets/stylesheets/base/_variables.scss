@@ -17,6 +17,7 @@ $base-z-index: 0;
 
 // Colors
 $blue: #477dca;
+$green: #57AD68;
 $dark-gray: #333;
 $medium-gray: #999;
 $light-gray: #ddd;
@@ -24,7 +25,7 @@ $light-gray: #ddd;
 // Font Colors
 $base-background-color: #fff;
 $base-font-color: $dark-gray;
-$action-color: $blue;
+$action-color: lighten($green, 10%);
 
 // Border
 $base-border-color: $light-gray;
@@ -37,7 +38,7 @@ $form-box-shadow-focus: $form-box-shadow, 0 0 5px adjust-color($action-color, $l
 // Custom Colors
 
 $light-grey: #efefef;
-$primary-color: #A78C83;
+$primary-color: $green;
 $secondary-color: #3D6499;
 $white: lighten($primary-color, 70%);
 
