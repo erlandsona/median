@@ -3,10 +3,7 @@ ruby '2.2.2'
 #ruby-gemset=median
 
 gem 'bitters'
-gem 'carrierwave'
 gem 'coffee-rails', '~> 4.1.0'
-gem 'figaro'
-gem 'fog'
 gem 'friendly_id'
 gem 'haml-rails'
 gem 'jbuilder', '~> 2.0'
@@ -16,11 +13,11 @@ gem 'neat'
 gem 'pg'
 gem 'rails', '4.2.1'
 gem 'redcarpet'
-gem 'rmagick'
 gem 'sass-rails', '~> 5.0'
 gem 'simple_form'
 gem 'sorcery'
 gem 'uglifier', '>= 1.3.0'
+
 group :development do
   gem 'refills'
 end

@@ -20,9 +20,7 @@
           - else
             %li= link_to "Share Some Knowledge", new_post_path
             %li= link_to "Sign Out", user_session_path, method: :delete
-      - background_image = @post ? @post.image_url.to_s : ""
-      %header{ :style => "background-image: url('#{background_image}')"}
-        = content_for?(:page_title) ? content_for(:page_title) : "Page Title"
+      %header= content_for?(:page_title) ? content_for(:page_title) : "Page Title"
       %section#content
         - flash.each do |key, message|
           %div{ class: "flash-#{key}" }= message
