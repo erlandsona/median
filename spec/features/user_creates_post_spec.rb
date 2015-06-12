@@ -31,6 +31,7 @@ feature "user creates post" do
 
   scenario "happy path save as draft" do
     me = Fabricate(:user, name: "Bob")
+    other = Fabricate(:user, name: "Dave")
     signin_as me
     click_on "Share Some Knowledge"
     fill_in "Title", with: "TIL: Mugs don't wash themselves"
@@ -40,7 +41,6 @@ feature "user creates post" do
     current_path.should == user_posts_path(me)
     page.should have_link "TIL: Mugs don't wash themselves [DRAFT]"
     click_on "TIL: Mugs don't wash themselves [DRAFT]"
-    page.should have_notice("This post has not yet been published.")
     page.should have_css("p", text: "There are some simple steps to washing a mug. First, don't set it in the sink. Then, apply soap, scrub and rinse. Finally, do set the mug in the drying rack.")
     page.should have_css(".author", text: "Bob")
     signout
