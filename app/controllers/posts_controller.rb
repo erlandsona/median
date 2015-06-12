@@ -29,6 +29,13 @@ class PostsController < ApplicationController
     end
   end
 
+  def show
+    if @post.draft? && @post.author != current_user
+      flash.alert = "You do not have permission to access that page."
+      redirect_to root_path
+    end
+  end
+
   private
 
 

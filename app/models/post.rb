@@ -10,4 +10,16 @@ class Post < ActiveRecord::Base
     self.published_at = Time.now
     self.save!
   end
+
+  def draft?
+    self.published_at.nil?
+  end
+
+  def title_with_status
+    if self.draft?
+      self.title = "#{title} [DRAFT]"
+    else
+      self.title = "#{title}"
+    end
+  end
 end
