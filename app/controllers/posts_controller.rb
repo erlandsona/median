@@ -1,6 +1,5 @@
 class PostsController < ApplicationController
   before_filter :load_post
-  before_filter :load_comments
   before_filter :load_user, except: [:new, :create]
   before_action :require_login, except: [:index, :show]
 
@@ -19,6 +18,7 @@ class PostsController < ApplicationController
   end
 
   def show
+    @comments = @post.comments.all
     @comment = Comment.new
   end
 
@@ -34,10 +34,6 @@ class PostsController < ApplicationController
     if params[:post].present?
       @post.assign_attributes(post_params)
     end
-  end
-
-  def load_comments
-    @comments = @post.comments.all
   end
 
   def load_user
