@@ -7,8 +7,8 @@ class Post < ActiveRecord::Base
   validates :author, :body, :title, presence: true
 
   def all_tags=(names)
-    names.split(",").map do |name|
-      self.tags << Tag.where(name: name.strip).first_or_create
+    self.tags = names.split(",").map do |name|
+      Tag.where(name: name.strip).first_or_create
     end
   end
 
