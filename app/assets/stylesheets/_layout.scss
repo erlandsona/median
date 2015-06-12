@@ -44,7 +44,11 @@ body {
       }
     }
     header {
+      height: 400px;
       background-color: $primary-color;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center, center;
       * {
         color: $light-grey;
         margin: 0;
