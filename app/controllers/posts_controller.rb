@@ -4,7 +4,11 @@ class PostsController < ApplicationController
   before_action :require_login, except: [:index, :show]
 
   def index
-    @posts = @user.posts.published
+    unless @user == current_user
+      @posts = @user.posts.published
+    else
+      @posts = @user.posts
+    end
   end
 
   def create
