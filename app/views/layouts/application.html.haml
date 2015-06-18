@@ -19,8 +19,12 @@
               %li= link_to "Sign In", new_user_session_path
           - else
             %li= link_to "Share Some Knowledge", new_post_path
-            %li= link_to "Sign Out", user_session_path, method: :delete
-      %header= content_for?(:page_title) ? content_for(:page_title) : "Page Title"
+            %li#link_user= link_to "#{current_user.name}", user_posts_path(current_user)
+            %li#edit_user= link_to "Edit", edit_user_path
+            %li#sign_out= link_to "Sign Out", user_session_path, method: :delete
+      - background_image = @post ? @post.image_url.to_s : ""
+      %header{ :style => "background-image: url('#{background_image}')"}
+        = content_for?(:page_title) ? content_for(:page_title) : "Page Title"
       %section#content
         - flash.each do |key, message|
           %div{ class: "flash-#{key}" }= message

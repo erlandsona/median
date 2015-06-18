@@ -16,12 +16,26 @@ ActiveRecord::Schema.define(version: 20150609192842) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "comments", force: :cascade do |t|
+    t.integer  "post_id"
+    t.integer  "author_id"
+    t.text     "body"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "comments", ["author_id"], name: "index_comments_on_author_id", using: :btree
+  add_index "comments", ["post_id"], name: "index_comments_on_post_id", using: :btree
+
   create_table "posts", force: :cascade do |t|
     t.integer  "author_id"
     t.string   "title"
     t.text     "body"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.string   "image"
+    t.string   "slug"
+    t.datetime "published_at"
   end
 
   add_index "posts", ["author_id"], name: "index_posts_on_author_id", using: :btree
@@ -49,10 +63,14 @@ ActiveRecord::Schema.define(version: 20150609192842) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "name"
+    t.string   "username"
+    t.text     "bio"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
 
+  add_foreign_key "comments", "posts"
+  add_foreign_key "comments", "users", column: "author_id"
   add_foreign_key "posts", "users", column: "author_id"
   add_foreign_key "taggings", "posts"
   add_foreign_key "taggings", "tags"
